@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// VERSION is for knowing the current version of the statsd-go
 const VERSION = "1.0.0"
 
 var (
@@ -96,8 +97,8 @@ func main() {
 
 	log.Printf("flushing metrics every %d seconds\n", *interval)
 
-	go listenUdp()
-	go listenTcp()
+	go listenUDP()
+	go listenTCP()
 
 	monitor()
 }
