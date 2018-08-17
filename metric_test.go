@@ -19,11 +19,11 @@ func TestReadPackets(t *testing.T) {
 	}
 
 	if counters["a"] != 40 {
-		t.Errorf("got %d for counter a, expected 40", counters["a"])
+		t.Errorf("got %f for counter a, expected 40", counters["a"])
 	}
 
 	if counters["b"] != 90 {
-		t.Errorf("got %d for counter b, expected 90", counters["b"])
+		t.Errorf("got %f for counter b, expected 90", counters["b"])
 	}
 
 	readPacket(packet{name: "a", bucket: "g", value: 15.1})
