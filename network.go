@@ -14,7 +14,7 @@ type packet struct {
 
 var packets = make(chan packet, 10000)
 
-func listenTcp() {
+func listenTCP() {
 	listener, err := net.Listen("tcp", *address)
 	if err != nil {
 		log.Fatal(err)
@@ -30,11 +30,11 @@ func listenTcp() {
 
 		log.Printf("new connection from tcp %s", conn.RemoteAddr())
 
-		go handleTcpConn(conn)
+		go handleTCPConn(conn)
 	}
 }
 
-func handleTcpConn(conn net.Conn) {
+func handleTCPConn(conn net.Conn) {
 	defer conn.Close()
 
 	msg := make([]byte, 0)
@@ -60,7 +60,7 @@ func handleTcpConn(conn net.Conn) {
 	handle(string(msg))
 }
 
-func listenUdp() {
+func listenUDP() {
 	addr, err := net.ResolveUDPAddr("udp", *address)
 	if err != nil {
 		log.Fatal(err)
