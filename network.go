@@ -17,7 +17,7 @@ var packets = make(chan packet, 10000)
 func listenTcp() {
 	listener, err := net.Listen("tcp", *address)
 	if err != nil {
-		log.Fatal("unable to listen on tcp %s: %s", *address, err)
+		log.Fatal(err)
 	}
 
 	log.Printf("listening for events at tcp %s...\n", *address)
@@ -63,12 +63,12 @@ func handleTcpConn(conn net.Conn) {
 func listenUdp() {
 	addr, err := net.ResolveUDPAddr("udp", *address)
 	if err != nil {
-		log.Fatal("unable to resolve service address: %s", err)
+		log.Fatal(err)
 	}
 
 	listener, err := net.ListenUDP("udp", addr)
 	if err != nil {
-		log.Fatal("unable to listen on udp %s: %s", *address, err)
+		log.Fatal(err)
 	}
 	defer listener.Close()
 
